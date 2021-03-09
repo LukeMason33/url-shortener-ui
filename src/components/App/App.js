@@ -10,8 +10,7 @@ export const App = () =>  {
   useEffect(() => {
     getUrls()
       .then(data => {
-        setUrls(data)
-        console.log(urls)
+        setUrls(data.urls)
       })
   }, [])
 
