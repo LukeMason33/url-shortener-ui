@@ -25,7 +25,7 @@ export const App = () =>  {
     <main className="App">
       <header>
         <h1>URL Shortener</h1>
-        <UrlForm submitNewUrl={submitNewUrl} urls={urls}/>
+        <UrlForm submitNewUrl={submitNewUrl}/>
       </header>
 
       <UrlContainer urls={urls}/>
