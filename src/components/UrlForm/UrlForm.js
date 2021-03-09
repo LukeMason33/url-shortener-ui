@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 const UrlForm = ({submitNewUrl}) => {
   const [title, setTitle] = useState('');
   const [urlToShorten, setUrlToShorten] = useState('');
+  const [error, setError] = useState('');
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -19,7 +20,13 @@ const UrlForm = ({submitNewUrl}) => {
     setUrlToShorten('');
   }
 
-
+  const handleFormError = (newUrl) => {
+    if (!title || !setUrlToShorten) {
+      setError('You must fill out all fields of the form first!')
+    } else {
+      submitNewUrl(newUrl);
+    }
+  }
 
   return (
     <form>
@@ -44,6 +51,7 @@ const UrlForm = ({submitNewUrl}) => {
       <button onClick={e => handleSubmit(e)}>
         Shorten Please!
       </button>
+      {error && <p>{error}</p>}
     </form>
   )
 }

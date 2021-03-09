@@ -2,7 +2,7 @@ describe('URL Shortner', () => {
   beforeEach(() => {
     cy.intercept('GET', 'http://localhost:3001/api/v1/urls', {
       fixture: 'urlData.json',
-      statusCode: 200
+      statusCode: 500
     })
     cy.intercept('POST', 'http://localhost:3001/api/v1/urls', {
       statusCode: 200,
