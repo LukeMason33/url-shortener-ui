@@ -10,6 +10,8 @@ export const App = () =>  {
   const submitNewUrl = (newUrl) => {
     postNewUrl(newUrl)
       .then(newUrl => setUrls([...urls, newUrl]))
+    getUrls()
+      .then(data => setUrls(data.urls))
   }
 
   useEffect(() => {
