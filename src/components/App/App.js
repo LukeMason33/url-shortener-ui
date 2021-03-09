@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import { getUrls } from '../../apiCalls';
+import { getUrls, postNewUrl} from '../../apiCalls';
 import UrlContainer from '../UrlContainer/UrlContainer';
 import UrlForm from '../UrlForm/UrlForm';
 
 export const App = () =>  {
   const[urls, setUrls] = useState([]);
+
+  const submitNewUrl = (newUrl) => {
+    postNewUrl(newUrl)
+      .then(newUrl => setUrls(...urls, newUrl))
+  }
 
   useEffect(() => {
     getUrls()
