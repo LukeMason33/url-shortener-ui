@@ -26,6 +26,7 @@ const UrlForm = ({submitNewUrl}) => {
       <input
         type='text'
         placeholder='Title...'
+        className='title'
         name='title'
         value={title}
         onChange={event => setTitle(event.target.value)}
@@ -34,6 +35,7 @@ const UrlForm = ({submitNewUrl}) => {
       <input
         type='text'
         placeholder='URL to Shorten...'
+        className='urlToShorten'
         name='urlToShorten'
         value={urlToShorten}
         onChange={event => setUrlToShorten(event.target.value)}
