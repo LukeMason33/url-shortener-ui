@@ -8,7 +8,11 @@ export const App = () =>  {
   const[urls, setUrls] = useState([]);
 
   useEffect(() => {
-
+    getUrls()
+      .then(data => {
+        setUrls(data)
+        console.log(urls)
+      })
   }, [])
 
   return (
