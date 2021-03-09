@@ -11,4 +11,5 @@ export const postNewUrl = (newUrl) => {
     },
     body: JSON.stringify(newUrl)
   })
+    .then(response => response.json())
 }
