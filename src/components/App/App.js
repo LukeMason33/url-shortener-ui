@@ -9,7 +9,7 @@ export const App = () =>  {
 
   const submitNewUrl = (newUrl) => {
     postNewUrl(newUrl)
-      .then(newUrl => setUrls(...urls, newUrl))
+      .then(newUrl => setUrls([...urls, newUrl]))
   }
 
   useEffect(() => {
@@ -23,7 +23,7 @@ export const App = () =>  {
     <main className="App">
       <header>
         <h1>URL Shortener</h1>
-        <UrlForm />
+        <UrlForm submitNewUrl={submitNewUrl} urls={urls}/>
       </header>
 
       <UrlContainer urls={urls}/>
