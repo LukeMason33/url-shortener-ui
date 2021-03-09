@@ -11,13 +11,19 @@ const UrlForm = ({submitNewUrl}) => {
       long_url: urlToShorten,
       title: title
     }
-    submitNewUrl(newUrl);
+    handleFormError(newUrl);
     clearInputs();
   }
 
   const clearInputs = () => {
     setTitle('');
     setUrlToShorten('');
+  }
+
+  const clearError = () => {
+    if(title && setUrlToShorten) {
+      setError('')
+    }
   }
 
   const handleFormError = (newUrl) => {
