@@ -20,18 +20,17 @@ const UrlForm = ({submitNewUrl}) => {
     setUrlToShorten('');
   }
 
-  const clearError = () => {
-    if(title && setUrlToShorten) {
-      setError('')
-    }
-  }
-
   const handleFormError = (newUrl) => {
-    if (!title || !setUrlToShorten) {
+    if (title === '' || urlToShorten === '') {
       setError('You must fill out all fields of the form first!')
     } else {
       submitNewUrl(newUrl);
+      clearError();
     }
+  }
+
+  const clearError = () => {
+    setError('')
   }
 
   return (
@@ -57,7 +56,7 @@ const UrlForm = ({submitNewUrl}) => {
       <button onClick={e => handleSubmit(e)}>
         Shorten Please!
       </button>
-      {error && <p>{error}</p>}
+      {error && <p className='error'>{error}</p>}
     </form>
   )
 }

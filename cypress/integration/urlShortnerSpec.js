@@ -2,7 +2,7 @@ describe('URL Shortner', () => {
   beforeEach(() => {
     cy.intercept('GET', 'http://localhost:3001/api/v1/urls', {
       fixture: 'urlData.json',
-      statusCode: 500
+      statusCode: 200
     })
     cy.intercept('POST', 'http://localhost:3001/api/v1/urls', {
       statusCode: 200,
@@ -37,5 +37,21 @@ describe('URL Shortner', () => {
   it('Should be able to submit the form and see the shortened url pop up on screen', () => {
     cy.get('button').click()
       .get('.url').should('have.length', 2)
+  })
+})
+
+describe('Error handling', () => {
+  beforeEach(() => {
+    cy.intercept('GET', 'http://localhost:3001/api/v1/urls', {
+      fixture: 'urlData.json',
+      statusCode: 200
+    })
+})
+
+  it('Should display an error message if a user tries to submit form without filling in all fields', () => {
+    cy.visit('http://localhost:3000/')
+      .get('.title').type('test')
+      .get('button').click()
+      .get('.error')
   })
 })
